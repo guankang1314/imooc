@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.imooc.service.StuService;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 /**
  * @author qingtian
  * @description:
  * @Package com.immoc.controller
  * @date 2021/8/30 11:07
  */
+@ApiIgnore
 @RestController
 public class StuFooController {
 

@@ -1,4 +1,7 @@
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\SimpleItemVO.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsComments.java
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\CommentLevelCountsVO.java
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\NewItemsVO.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\bo\UserBO.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\Users.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\Orders.java
@@ -7,8 +10,12 @@ D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\Category.ja
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\OrderStatus.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsImg.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsParam.java
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\CategoryVO.java
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\ItemCommentVO.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\UserAddress.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\ItemsSpec.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\Carousel.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\Stu.java
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\ItemInfoVO.java
 D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\OrderItems.java
+D:\workspace\foodie-dev\foodie-dev-pojo\src\main\java\com\imooc\pojo\vo\SubCategoryVO.java

@@ -1,6 +1,9 @@
 D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\config\CorsConfig.java
+D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\IndexController.java
+D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\ItemsController.java
 D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\HelloController.java
 D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\PassportController.java
+D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\BaseController.java
 D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\Application.java
 D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\controller\StuFooController.java
 D:\workspace\foodie-dev\foodie-dev-api\src\main\java\com\imooc\aspect\ServiceLogAspect.java

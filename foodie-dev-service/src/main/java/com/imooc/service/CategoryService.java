@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.imooc.pojo.Category;
 import com.imooc.pojo.vo.CategoryVO;
+import com.imooc.pojo.vo.NewItemsVO;
 
 /**
  * @author qingtian
@@ -25,4 +26,11 @@ public interface CategoryService {
      * @return
      */
     List<CategoryVO> getSubCatList(Integer rootCatId);
+
+    /**
+     * 查询首页每个一级分类下的最新6条商品数据
+     * @param rootCatId
+     * @return
+     */
+    List<NewItemsVO> getSixNewItemsLazy(Integer rootCatId);
 }

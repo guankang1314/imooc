@@ -1,6 +1,8 @@
 package com.imooc.service.impl;
 
 import java.net.Inet4Address;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,6 +25,8 @@ import com.imooc.pojo.ItemsParam;
 import com.imooc.pojo.ItemsSpec;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
 import com.imooc.pojo.vo.ItemCommentVO;
+import com.imooc.pojo.vo.SearchItemsVO;
+import com.imooc.pojo.vo.ShopcartVO;
 import com.imooc.service.ItemService;
 import com.imooc.utils.DesensitizationUtil;
 import com.imooc.utils.PagedGridResult;
@@ -119,10 +123,49 @@ public class ItemServiceImpl implements ItemService {
         return grid;
     }
 
+    @Override
+    public PagedGridResult searchItems(String keywords, String sort, Integer page, Integer pageSize) {
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("keywords",keywords);
+        map.put("sort",sort);
+
+        PageHelper.startPage(page,pageSize);
+        //调用数据层方法
+        List<SearchItemsVO> list = itemsMapperCustom.searchItems(map);
+        PagedGridResult gridResult = setPagedGrid(list, page);
+        return gridResult;
+    }
+
+    @Override
+    public PagedGridResult searchItems(int catId, String sort, Integer page, Integer pageSize) {
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("catId",catId);
+        map.put("sort",sort);
+
+        PageHelper.startPage(page,pageSize);
+        //调用数据层方法
+        List<SearchItemsVO> list = itemsMapperCustom.searchItemsByThirdCat(map);
+        PagedGridResult gridResult = setPagedGrid(list, page);
+        return gridResult;
+    }
+
+    @Override
+    public List<ShopcartVO> queryItemsBySpecIds(String specIds) {
+
+        String[] ids = specIds.split(",");
+        ArrayList<String> specIdLList = new ArrayList<>();
+        Collections.addAll(specIdLList,ids);
+
+        return itemsMapperCustom.queryItemsBySpecIds(specIdLList);
+    }
+
     private PagedGridResult setPagedGrid(List<?> list,Integer page) {
         PageInfo<?> pageList = new PageInfo<>(list);
         PagedGridResult grid = new PagedGridResult();
-        grid.setPage(page); grid.setRows(list);
+        grid.setPage(page);
+        grid.setRows(list);
         grid.setTotal(pageList.getPages());
         grid.setRecords(pageList.getTotal());
         return grid;

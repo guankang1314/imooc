@@ -3,6 +3,7 @@ package com.imooc.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.catalina.User;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.imooc.enums.YesOrNo;
 import com.imooc.mapper.UserAddressMapper;
 import com.imooc.pojo.UserAddress;
 import com.imooc.pojo.bo.AddressBO;
@@ -59,4 +61,50 @@ public class AddressServiceImpl implements AddressService {
         userAddress.setUpdatedTime(new Date());
         userAddressMapper.insert(userAddress);
     }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void updateUserAddress(AddressBO addressBO) {
+
+        String addressId = addressBO.getAddressId();
+
+        UserAddress updateAdress = new UserAddress();
+        BeanUtils.copyProperties(addressBO,updateAdress);
+
+        updateAdress.setId(addressId);
+        updateAdress.setUpdatedTime(new Date());
+        userAddressMapper.updateByPrimaryKeySelective(updateAdress);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void deleteUserAddress(String userId, String addressId) {
+
+        UserAddress userAddress = new UserAddress();
+        userAddress.setId(addressId);
+        userAddress.setUserId(userId);
+        userAddressMapper.delete(userAddress);
+    }
+
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void updateUserAddressToBeDefault(String userId, String addressId) {
+
+        UserAddress queryAddress = new UserAddress();
+        queryAddress.setUserId(userId);
+        queryAddress.setIsDefault(YesOrNo.YES.type);
+        List<UserAddress> list = userAddressMapper.select(queryAddress);
+        for (UserAddress userAddress : list) {
+            userAddress.setIsDefault(YesOrNo.NO.type);
+            userAddressMapper.updateByPrimaryKeySelective(userAddress);
+        }
+
+        UserAddress defaultAddress = new UserAddress();
+        defaultAddress.setUserId(userId);
+        defaultAddress.setId(addressId);
+        defaultAddress.setIsDefault(YesOrNo.YES.type);
+        userAddressMapper.updateByPrimaryKeySelective(defaultAddress);
+    }
+
 }

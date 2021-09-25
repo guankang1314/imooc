@@ -8,10 +8,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.imooc.enums.CommentLevel;
+import com.imooc.enums.YesOrNo;
 import com.imooc.mapper.ItemsCommentsMapper;
 import com.imooc.mapper.ItemsImgMapper;
 import com.imooc.mapper.ItemsMapper;
@@ -159,6 +162,31 @@ public class ItemServiceImpl implements ItemService {
         Collections.addAll(specIdLList,ids);
 
         return itemsMapperCustom.queryItemsBySpecIds(specIdLList);
+    }
+
+    @Override
+    public ItemsSpec queryItemSpecById(String specId) {
+
+        return itemsSpecMapper.selectByPrimaryKey(specId);
+    }
+
+    @Override
+    public String queryItemMainImgById(String itemId) {
+
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesOrNo.YES.type);
+        ItemsImg img = itemsImgMapper.selectOne(itemsImg);
+        return img != null ? img.getUrl() : "";
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
+    public void decreaseItemSpecStock(String specId, int buyCounts) {
+        int result = itemsMapperCustom.decreaseItemSpecStock(specId, buyCounts);
+        if (result != 1) {
+            throw new RuntimeException("订单创建失败，原因：库存不足");
+        }
     }
 
     private PagedGridResult setPagedGrid(List<?> list,Integer page) {

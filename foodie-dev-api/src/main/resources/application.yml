@@ -18,6 +18,10 @@ spring:
       connection-test-query: SELECT 1
   jackson:
     time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 512000
+      max-request-size: 512000
 mybatis:
   type-aliases-package: com.imooc.pojo # 所有POJO类所在包路径
   mapper-locations: classpath:mapper/*.xml # mapper映射文件

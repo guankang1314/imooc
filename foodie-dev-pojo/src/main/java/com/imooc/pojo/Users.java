@@ -1,19 +1,19 @@
 package com.imooc.pojo;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 public class Users {
     /**
-     * 用户名 用户名
-     */
-    @Id
-    private String username;
-
-    /**
      * 主键id 用户id
      */
+    @Id
     private String id;
+
+    /**
+     * 用户名 用户名
+     */
+    private String username;
 
     /**
      * 密码 密码
@@ -68,24 +68,6 @@ public class Users {
     private Date updatedTime;
 
     /**
-     * 获取用户名 用户名
-     *
-     * @return username - 用户名 用户名
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * 设置用户名 用户名
-     *
-     * @param username 用户名 用户名
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
      * 获取主键id 用户id
      *
      * @return id - 主键id 用户id
@@ -101,6 +83,24 @@ public class Users {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     * 获取用户名 用户名
+     *
+     * @return username - 用户名 用户名
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * 设置用户名 用户名
+     *
+     * @param username 用户名 用户名
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.imooc.controller.BaseController;
 import com.imooc.pojo.Orders;
+import com.imooc.pojo.vo.OrderStatusCountsVO;
 import com.imooc.service.center.MyOrderService;
 import com.imooc.utils.IMOOCJSONResult;
 import com.imooc.utils.PagedGridResult;
@@ -101,6 +102,39 @@ public class MyOrdersController extends BaseController {
             return IMOOCJSONResult.errorMsg("订单删除失败！");
         }
         return IMOOCJSONResult.ok();
+    }
+
+    @ApiOperation(value = "获得订单状态数概况",notes = "获得订单状态数概况",httpMethod = "POST")
+    @PostMapping("/statusCounts")
+    public IMOOCJSONResult statusCounts(
+            @ApiParam(name = "userId",value = "用户id",required = true)
+            @RequestParam String userId) {
+        if (StringUtils.isBlank(userId)) {
+            return IMOOCJSONResult.errorMsg(null);
+        }
+
+        OrderStatusCountsVO statusCounts = myOrderService.getOrderStatusCounts(userId);
+
+        return IMOOCJSONResult.ok(statusCounts);
+    }
+
+
+    @PostMapping("/trend")
+    public IMOOCJSONResult trend(@RequestParam String userId,
+            @RequestParam Integer page,
+            @RequestParam Integer pageSize) {
+        if (StringUtils.isBlank(userId)) {
+            return IMOOCJSONResult.errorMsg(null);
+        }
+        if (page == null) {
+            page = 1;
+        }
+        if (pageSize == null) {
+            pageSize = COMMENT_PAGE_SIZE;
+        }
+
+        PagedGridResult result = myOrderService.getOrdersTrend(userId, page, pageSize);
+        return IMOOCJSONResult.ok(result);
     }
 
     // private IMOOCJSONResult checkUserOrders(String userId,String orderId) {

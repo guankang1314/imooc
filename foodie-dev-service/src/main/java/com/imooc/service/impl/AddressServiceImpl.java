@@ -3,7 +3,6 @@ package com.imooc.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.catalina.User;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
 
+
         //默认昵称相当于用户名
         users.setNickname(userBO.getUsername());
         users.setFace(USER_FACE);
